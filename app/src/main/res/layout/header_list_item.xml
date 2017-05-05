@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/header_list_item_height"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_vertical"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/header_list_item_horizontal_padding"
+              android:paddingRight="@dimen/header_list_item_horizontal_padding">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:text="Title"
+        android:textSize="23sp"/>
+
+    <TextView
+        android:id="@+id/tv_summary"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:alpha="50"
+        android:text="Summary"
+        android:textSize="19sp"/>
+
+</LinearLayout>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.hello.droid">
+
+    <!-- android:sharedUserId="android.uid.system" -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DEVICE_POWER"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/hello_droid_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.hello.dialog.DialogTestActivity"
+            android:label="DialogTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.media.MediaTestActivity"
+            android:label="MediaTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.pattern.PatternTestActivity"
+            android:label="PatternTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.database.DatabaseTestActivity"
+            android:label="PatternTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.anr.AnrTestActivity"
+            android:label="AnrTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.keyevent.KeyEventTestActivity"
+            android:label="KeyEvent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.camera.CameraTestActivity"
+            android:label="KeyTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.system.SystemTestActivity"
+            android:label="KeyTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.hello.anr.BroadcastReceiverAnr">
+            <intent-filter>
+                <action android:name="android.intent.action.anr"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.hello.anr.ServiceAnr"
+            android:exported="false"/>
+
+        <provider
+            android:name="com.hello.database.MusicProvider"
+            android:authorities="com.hello.annan.music.provider"
+            android:exported="true"/>
+
+        <activity
+            android:name="com.hello.camera.CameraActivity"
+            android:label="@string/title_activity_camera"/>
+        <activity
+            android:name="com.hello.system.AdjustSizeActivity"
+            android:theme="@style/window_transparent"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
+            android:name="com.hello.system.AdjustPanActivity"
+            android:theme="@style/window_transparent"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name="com.hello.thread.ThreadTestActivity"
+            android:label="ThreadTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.touch.TouchTestActivity"
+            android:label="TouchTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hello.wifi.WifiTestActivity"
+            android:label="WifiTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.hello.touch.TouchBlockActivity"></activity>
+        <activity
+            android:name="com.hello.regular.RegularTestActivity"
+            android:label="RegularTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.hello.tab.ActionbarTabActivity"
+            android:label="ActionbarTab">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
