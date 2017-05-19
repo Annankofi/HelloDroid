@@ -31,6 +31,7 @@ public class MainActivity extends ListActivity {
         getListView().setTextFilterEnabled(true);
     }
 
+
     // click and launch testActivity
     @Override
     protected void onListItemClick(ListView listView, View v, int position, long id) {

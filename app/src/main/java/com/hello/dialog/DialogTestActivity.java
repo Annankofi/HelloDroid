@@ -3,6 +3,7 @@ package com.hello.dialog;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,8 +23,9 @@ public class DialogTestActivity extends BaseListActivity {
     private static final int DIALOG_PROGRESS_DIALOG_ID = 1;
     private AlertDialog mAlertDialog;
 
+    private MultiDialogManager mMultiDialogManager;
     private enum DataItems {
-        DIALOG, ALERT_DIALOG, SIMPLE_ALERTDIALOG
+        DIALOG, ALERT_DIALOG, SIMPLE_ALERTDIALOG,MULTI_DIALOGS
     }
 
     @Override
@@ -48,6 +50,9 @@ public class DialogTestActivity extends BaseListActivity {
             case SIMPLE_ALERTDIALOG:
                 showSimpleAlertDialog();
                 break;
+            case MULTI_DIALOGS:
+                mMultiDialogManager = new MultiDialogManager(this);
+                break;
             default:
                 break;
         }
@@ -66,6 +71,14 @@ public class DialogTestActivity extends BaseListActivity {
         return true;
     }
 
+
+    @Override
+    protected void onMessage(Message msg) {
+        super.onMessage(msg);
+        if(mMultiDialogManager!=null){
+            mMultiDialogManager.onMessage(msg);
+        }
+    }
 
     @Override
     protected Dialog onCreateDialog(int id) {

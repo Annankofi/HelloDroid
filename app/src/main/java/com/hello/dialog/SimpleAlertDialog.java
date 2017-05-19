@@ -12,6 +12,7 @@ public class SimpleAlertDialog {
     private Context mContext;
     private Builder b;
     private AlertDialog mDialog;
+    private int mWindowType = -1;
 
     public SimpleAlertDialog(Context context) {
         mContext = context;
@@ -64,11 +65,17 @@ public class SimpleAlertDialog {
         }
 
         mDialog = b.create();
+        if(mWindowType != -1){
+            mDialog.getWindow().setType(mWindowType);
+        }
         mDialog.show();
 
         TextView tv = (TextView) mDialog.getWindow().findViewById(android.R.id.message);
         tv.setGravity(Gravity.CENTER);
         tv.setPadding(14, 46, 14, 36);
+    }
+    public void setWindowType(int type){
+        mWindowType = type;
     }
 
     public void dismiss() {
