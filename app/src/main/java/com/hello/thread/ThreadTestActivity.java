@@ -48,7 +48,8 @@ public class ThreadTestActivity extends BaseListActivity {
                 threadB.start();
                 break;
             case INTERRUPT:
-
+                Log.d(TAG, "onListItemClick and ConsumeAndProductThread");
+                new ConsumeAndProductThread().start();
                 break;
             default:
                 break;
