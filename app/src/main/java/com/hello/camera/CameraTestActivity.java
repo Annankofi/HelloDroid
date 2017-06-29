@@ -20,7 +20,7 @@ public class CameraTestActivity extends BaseListActivity {
     Camera mCamera;
 
     private enum DataItems {
-        SUPPORT, AVAILABLE, STARTCAMERA, CAMERA_INFO
+        CAMERA_INFO,SUPPORT, AVAILABLE, STARTCAMERA
     }
 
     @Override
@@ -48,10 +48,19 @@ public class CameraTestActivity extends BaseListActivity {
                 startActivity(intent);
                 break;
             case CAMERA_INFO:
-                Camera camera = Camera.open(1);
-                Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
-                Camera.getCameraInfo(1, cameraInfo);
-                Log.d(TAG, "cameraInfo " + cameraInfo);
+                checkCameraHardware(this);
+                int totalNumber = Camera.getNumberOfCameras();
+                Log.d(TAG, "getNumberOfCameras:" + totalNumber);
+
+                // CAMERA_FACING_BACK = 0;
+                // CAMERA_FACING_FRONT = 1;
+                for (int i = 0; i < totalNumber; i++) {
+                    Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+                    Camera.getCameraInfo(i, cameraInfo);
+                    Log.d(TAG, "cameraInfo(" + i + ")  facing:" + cameraInfo.facing + " orientation:" +
+                            cameraInfo.orientation + " canDisableShutterSound:" + cameraInfo.canDisableShutterSound);
+                }
+
                 break;
             default:
                 break;

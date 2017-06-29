@@ -1,5 +1,6 @@
 package com.hello.keyevent;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -12,13 +13,12 @@ import com.hello.droid.Info;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class KeyEventTestActivity extends BaseListActivity {
     private static final String TAG = KeyEventTestActivity.class.getSimpleName();
-    private boolean mIsHomeCatchedEnabled = false;
 
+    InputEventMonitor mInputEventMonitor;
     private enum DataItems {
-        ENABLE_HOME, DISABLE_HOME
+        KEY_EVENT_PRINTER, INPUT_EVENT_MONITOR,INPUT_EVENT_UNREGISTER
     }
 
     @Override
@@ -35,11 +35,18 @@ public class KeyEventTestActivity extends BaseListActivity {
     protected void onListItemClick(ListView listView, View v, int position, long id) {
         Log.d(TAG, "onListItemClick " + mHeaderAdapter.getData().get(position).getTitle());
         switch (DataItems.valueOf(mHeaderAdapter.getData().get(position).getTitle())) {
-            case ENABLE_HOME:
-                mIsHomeCatchedEnabled = true;
+            case KEY_EVENT_PRINTER:
+                Intent intent = new Intent("android.intent.action.KEY_EVENT_PRINTER");
+                startActivity(intent);
                 break;
-            case DISABLE_HOME:
-                mIsHomeCatchedEnabled = false;
+            case INPUT_EVENT_MONITOR:
+                mInputEventMonitor = new InputEventMonitor(this);
+                if (mInputEventMonitor != null) {
+                    mInputEventMonitor.start();
+                }
+                break;
+            case INPUT_EVENT_UNREGISTER:
+
                 break;
             default:
                 break;
@@ -52,6 +59,10 @@ public class KeyEventTestActivity extends BaseListActivity {
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         Log.d(TAG, "onListItemClick " + mHeaderAdapter.getData().get(position).getTitle());
         switch (DataItems.valueOf(mHeaderAdapter.getData().get(position).getTitle())) {
+            case INPUT_EVENT_MONITOR:
+                if (mInputEventMonitor != null) {
+                    mInputEventMonitor.stop();
+                }
             default:
                 break;
         }
@@ -68,14 +79,6 @@ public class KeyEventTestActivity extends BaseListActivity {
 
     @Override
     public void onAttachedToWindow() {
-        //Test fail
-        Log.d(TAG, "onAttachedToWindow and mIsHomeCatchedEnabled " + mIsHomeCatchedEnabled);
-        mIsHomeCatchedEnabled = true;
-        if (mIsHomeCatchedEnabled) {
-            //This only works with target API 12.otherwise will cause:
-            //java.lang.IllegalArgumentException: Window type can not be changed after the window is added
-            // this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-        }
         super.onAttachedToWindow();
     }
 }

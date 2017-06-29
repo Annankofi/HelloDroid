@@ -22,6 +22,8 @@ public class MainActivity extends ListActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final String PACKAGE_NAME_PREFIX = "com.hello";
 
+    private static final String mTestOne = "KeyEvent";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,8 @@ public class MainActivity extends ListActivity {
         for (int i = 0; i < len; i++) {
             ResolveInfo info = list.get(i);
             String activityName = info.activityInfo.name;
-            if (prefix.length() == 0 || activityName.startsWith(prefix)) {
+            //可以只显示某个测试项
+            if (prefix.length() == 0 || activityName.startsWith(prefix) &&(mTestOne.isEmpty() || (activityName.contains(mTestOne)))) {
                 String[] labPath = activityName.split("\\.");
                 String nextLable = labPath[labPath.length - 1];
                 Intent intent = activityIntent(info.activityInfo.applicationInfo.packageName, info.activityInfo.name);

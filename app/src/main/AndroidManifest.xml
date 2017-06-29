@@ -94,6 +94,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.hello.keyevent.KeyEventPrinterActivity"
+
+            android:label="KeyEventPrinter">
+            <intent-filter>
+                <action android:name="android.intent.action.KEY_EVENT_PRINTER"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.hello.camera.CameraTestActivity"
             android:label="KeyTest">
             <intent-filter>

@@ -18,9 +18,14 @@ android {
         }
     }
 }
-
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs.add('-Xbootclasspath/p:app\\src\\main\\lib\\framework_intermediates.jar;')
+    }
+}
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    provided files('src/main/lib/framework_intermediates.jar')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
