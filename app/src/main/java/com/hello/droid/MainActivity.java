@@ -22,7 +22,7 @@ public class MainActivity extends ListActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final String PACKAGE_NAME_PREFIX = "com.hello";
 
-    private static final String mTestOne = "KeyEvent";
+    private static final String mTestOne = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

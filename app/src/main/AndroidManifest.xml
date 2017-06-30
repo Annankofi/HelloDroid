@@ -113,6 +113,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.hello.service.ServiceTestActivity"
+            android:label="KeyTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.hello.system.SystemTestActivity"
             android:label="KeyTest">
             <intent-filter>

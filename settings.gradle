@@ -1,1 +1,1 @@
-include ':app', ':cases'
+include ':app', ':cases', ':HelloService'
